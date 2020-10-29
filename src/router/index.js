@@ -1,13 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 Vue.use(VueRouter)
 
 export const routes = [
 	{
-		path: '/login',
-		component: () => import('@/views/login/index'),
-		hidden: true,
+		path: '/',
+		component: () => import('@/views/index/'),
 	},
+	// {
+	// 	path: '/login',
+	// 	component: () => import('@/views/login/index'),
+	// 	hidden: true,
+	// },
 	// {
 	// 	path: '/register',
 	// 	component: () => import('@/views/register/index'),
