@@ -1,27 +1,36 @@
 <template>
-	<div>
-		<el-tabs v-model="activeName" @tab-click="handleClick" class="tabs_top">
-			<el-tab-pane label="推荐音乐" name="recommend"></el-tab-pane>
-			<el-tab-pane label="热歌榜" name="hot"></el-tab-pane>
-			<el-tab-pane label="搜索" name="search"></el-tab-pane>
-		</el-tabs>
+	<div class="home">
+		<van-tabs v-model="tabActive" sticky>
+			<van-tab title="推荐音乐" name="recommend"></van-tab>
+			<van-tab title="热歌榜" name="hot"></van-tab>
+			<van-tab title="搜索" name="search"></van-tab>
+		</van-tabs>
+		<recommend v-show="tabActive === 'recommend'" />
+		<hot v-show="tabActive === 'hot'" />
 	</div>
 </template>
 
 <script>
+import Recommend from './components/Recommend'
+import Hot from './components/Hot'
 export default {
 	data() {
 		return {
-			activeName: 'recommend',
+			tabActive: 'hot',
 		}
 	},
-	methods: {
-		handleClick() {},
+	components: {
+		Recommend,
+		Hot,
 	},
+	methods: {},
 }
 </script>
 
 <style>
+.home {
+	background: #fcfcfd;
+}
 .tabs_top {
 	width: 100%;
 }

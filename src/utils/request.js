@@ -7,6 +7,7 @@ let loadingInstance
 const instance = axios.create({
 	baseURL: '',
 	timeout: 3333,
+	withCredentials: true,
 	headers: {
 		'Content-Type': 'application/json;charset=UTF-8',
 	},
@@ -38,7 +39,6 @@ instance.interceptors.response.use(
 	(response) => {
 		if (loadingInstance) loadingInstance.close()
 		const { data } = response
-		Vue.prototype.$baseMessage(`后端接口未知异常`, 'success')
 		return data
 	},
 	(error) => {
